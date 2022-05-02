@@ -1,9 +1,12 @@
 import React from "react";
 
-const Home = () => {
+const Home = (props: {name: string}) => {
+    
+
+
     return (
         <div>
-            Home
+            {props.name ? 'Hola' + props.name : 'No estas logeado en'}
         </div>
     );
 };

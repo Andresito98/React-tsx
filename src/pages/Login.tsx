@@ -1,13 +1,13 @@
 import React, { SyntheticEvent, useState } from "react";
 
-const Login = () => {
+const Login = (props: {setName: (name: string) => void}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const submit = async(e: SyntheticEvent) => {
         e.preventDefault();
 
-        await fetch('http://localhost:7200/api/login', {
+        const response = await fetch('http://localhost:7200/api/login', {
             method: 'POST',
             headers: {'Content-Type': 'aplication/json'},
             credentials: 'include',
@@ -16,6 +16,9 @@ const Login = () => {
                 password
             })
         });
+
+        const content = await response.json();
+        props.setName(content.name);
     }
     
     return (
