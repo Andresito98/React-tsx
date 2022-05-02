@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Nav = (props: {name: string, setName: (name: string) => void}) => {
-    const logout = async() => {
+const Nav = () => {
+    /*const logout = async() => {
 
       await fetch('http://localhost:7200/api/logout', {
             method: 'POST',
@@ -12,10 +12,10 @@ const Nav = (props: {name: string, setName: (name: string) => void}) => {
 
         props.setName('');
 
-    }
+    }*/
 
 
-    let menu;
+    /*let menu;
 
     if(props.name === ''){
       menu = (
@@ -36,7 +36,7 @@ const Nav = (props: {name: string, setName: (name: string) => void}) => {
               </li>
             </ul>
       )
-    }
+    }*/
 
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -44,7 +44,11 @@ const Nav = (props: {name: string, setName: (name: string) => void}) => {
           <Link to="/" className="navbar-brand">Home</Link>
 
           <div>
-            {menu}
+          <ul className="navbar-nav me-auto mb-2 mb-md-0">
+              <li className="nav-item">
+                <Link to="/login" className="nav-link active">Logout</Link>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

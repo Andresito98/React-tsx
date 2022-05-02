@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 function App() {
-  const [name, setName] = useState('');
+  /*const [name, setName] = useState('');
 
     useEffect(() => {
         (
@@ -22,16 +22,16 @@ function App() {
             setName(content.name);
             }
         )();
-    });
+    });*/
     
   return (
     <div className="App">      
-      <Nav name={name} setName={setName}/>
+      <Nav/>
       
       <main className="form-signin">
       <Routes>
-          <Route path="/" element={() => <Home name={name}/>}/>          
-          <Route path="/login" element={() => <Login setName={}={setName}/>}/>  
+          <Route path="/" element={<Home/>}/>        
+          <Route path="/login" element={<Login/>}/> 
           <Route path="/register" element={<Register/>}/>
       </Routes> 
       </main>
@@ -41,6 +41,11 @@ function App() {
 }
 
 export default App;
+
+/*
+        <Route path="/" element={() => <Home name={name}/>}/>          
+        <Route path="/login" element={() => <Login setName={}={setName}/>}/>
+        <Nav name={name} setName={setName}/> */
 
 // Parte 1 en el <main>
 // Parte 2 en el

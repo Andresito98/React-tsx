@@ -1,14 +1,17 @@
 import React from "react";
 
-const Home = (props: {name: string}) => {
+const Home = () => {
     
 
 
     return (
         <div>
-            {props.name ? 'Hola' + props.name : 'No estas logeado en'}
+            Home
         </div>
     );
 };
 
 export default Home;
+
+// const Home = (props: {name: string}) => {
+// {props.name ? 'Hola' + props.name : 'No estas logeado en'}
