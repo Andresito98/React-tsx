@@ -53,7 +53,7 @@
 
 * *  IDEA 6:
     * Paso 1 --> Podria hacer otra pestaña que sea como un foro que ya tengo el diseño creado del proyecto second commint 
-    * Paso 2 --> Hacerlo funcional con docket (algo un cacho mas complejo)
+    * Paso 2 --> Hacerlo funcional con socket (algo un cacho mas complejo)
 
 
 
@@ -72,7 +72,7 @@
 
 
 
-* *  IDEA 9:
+* *  IDEA 9: --> no se he sido capaz, si tengo la funcion javascript pero con tsx no
     * Darle funcionalidad a "Buscar por Nombre o Email" de la pestaña /insertar
 
 
@@ -83,7 +83,10 @@
     Indicando que solo se puede hacer 1 registro por usuario
 
 
-
+* *  IDEA 10:
+    * Referencia de pagina para mi proyecto
+    * https://brittanychiang.com/#projects
+    * https://github.com/bchiang7/v4
 
 
 

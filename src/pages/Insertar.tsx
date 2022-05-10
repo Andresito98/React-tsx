@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { useState } from "react";
 import {
     Stack,
     Table,
@@ -40,8 +40,10 @@ const Insertar = () => {
     const [email, setEmail] = useState('');
     const [technologies, setTechnologies] = useState('');
 
-    const submit = async(e: SyntheticEvent) => {
-      e.preventDefault();
+    const [candidatos, setCandidatos]=useState<any>();
+
+
+    const submit = async () => {      
 
       await fetch('https://localhost:7200/api/candidato', {
         method: 'POST',
@@ -56,14 +58,31 @@ const Insertar = () => {
           email,
           technologies
         })
-      });
+      }).then((response: any) => {
+        submit2();
+        console.log(candidatos)
+    })
+      //.then((res: any) => console.log(res)).catch((err: any) => console.log(err));
+
 
       return navigate('/home');
 
     }
 
+    const submit2 = async () => {      
 
-
+        await fetch('https://localhost:7200/api/candidato', {
+          method: 'GET',
+          headers: {'Content-Type': 'application/json'},
+          credentials: 'include'
+        }).then((response: any) => {
+            setCandidatos(response);
+        })
+  
+  
+        return navigate('/home');
+  
+      }
 
     
 
@@ -90,7 +109,7 @@ const Insertar = () => {
                 <Text fontSize='3xl'>Candidatos</Text>
             </Stack>
             <Stack pos="absolute" top="150" left="290px" >
-                <Input variant='filled' placeholder='Buscar por Nombre o Email' size='md' borderRadius='10px' width='300px'/>
+                <Input variant='filled' placeholder='Buscar por Nombre o Email' size='md' borderRadius='10px' width='300px' />
             </Stack>
 
 
@@ -134,7 +153,7 @@ const Insertar = () => {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='blue' type="submit" mr={3} >Insertar</Button>
+                        <Button colorScheme='blue' type="submit" mr={3} onClick={() => submit()} >Insertar</Button>
                         <Button colorScheme='blue' mr={3} onClick={onClose}>Close</Button>
                     </ModalFooter>
                     </ModalContent>
@@ -198,7 +217,19 @@ const Insertar = () => {
                         <Td >+34 647252678</Td>                        
                         <Td>pruebaAndres@prueba.com</Td>
                         <Td>Html / Angular</Td>
-                    </Tr>
+                    </Tr>                    
+                    {candidatos?.map((candidatos: any)=>(
+                        <Tr key={candidatos?.id}>
+                            <th>{candidatos?.id}</th>
+                            <th>{candidatos.firstName}</th>
+                            <th>{candidatos.lastName}</th>
+                            <th>{candidatos.city}</th>
+                            <th>{candidatos.phone}</th>
+                            <th>{candidatos.email}</th>
+                            <th>{candidatos.technologies}</th>
+                        </Tr>
+                    ))}
+
                     </Tbody>
                 </Table>
             </TableContainer>
@@ -210,9 +241,14 @@ const Insertar = () => {
 export default Insertar;
 
 /*
-En lugar de etiquetas --> tegnologias
-Marca tu nivel --> Basico / intermedio / avanzado
-
-
-Otra pestaña /datos --> donde aparezcan los datos que has registrados (tus propios datos) hacerlo igual que el video
+{data.map(candidato=>(
+                        <Tr key={candidato.id}>
+                            <th>{candidato.id}</th>
+                            <th>{candidato.firstName}</th>
+                            <th>{candidato.lastName}</th>
+                            <th>{candidato.email}</th>
+                            <th>{candidato.phone}</th>
+                            <th>{candidato.address}</th>
+                        </Tr>
+                    ))}
 */

@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import swal from "sweetalert";
 
-const Login = () => {  
-
-  
+const Login = () => {    
   
     let navigate = useNavigate();
     const [data, setData]=useState([]);
