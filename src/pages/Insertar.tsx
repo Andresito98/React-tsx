@@ -76,7 +76,9 @@ const Insertar = () => {
           headers: {'Content-Type': 'application/json'},
           credentials: 'include'
         }).then((response: any) => {
-            setCandidatos(response);
+            //const _res = response.json();
+            //setCandidatos(_res)
+            console.log(response.json())
         })
   
   
@@ -219,14 +221,15 @@ const Insertar = () => {
                         <Td>Html / Angular</Td>
                     </Tr>                    
                     {candidatos?.map((candidatos: any)=>(
+                        
                         <Tr key={candidatos?.id}>
-                            <th>{candidatos?.id}</th>
-                            <th>{candidatos.firstName}</th>
-                            <th>{candidatos.lastName}</th>
-                            <th>{candidatos.city}</th>
-                            <th>{candidatos.phone}</th>
-                            <th>{candidatos.email}</th>
-                            <th>{candidatos.technologies}</th>
+                            <Td>{candidatos?.id}</Td>
+                            <Td>{candidatos.firstName}</Td>
+                            <Td>{candidatos.lastName}</Td>
+                            <Td>{candidatos.city}</Td>
+                            <Td>{candidatos.phone}</Td>
+                            <Td>{candidatos.email}</Td>
+                            <Td>{candidatos.technologies}</Td>
                         </Tr>
                     ))}
 
@@ -243,12 +246,12 @@ export default Insertar;
 /*
 {data.map(candidato=>(
                         <Tr key={candidato.id}>
-                            <th>{candidato.id}</th>
-                            <th>{candidato.firstName}</th>
-                            <th>{candidato.lastName}</th>
-                            <th>{candidato.email}</th>
-                            <th>{candidato.phone}</th>
-                            <th>{candidato.address}</th>
+                            <Td>{candidato.id}</th>
+                            <Td>{candidato.firstName}</th>
+                            <Td>{candidato.lastName}</th>
+                            <Td>{candidato.email}</th>
+                            <Td>{candidato.phone}</th>
+                            <Td>{candidato.address}</th>
                         </Tr>
                     ))}
 */
