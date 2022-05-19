@@ -12,6 +12,16 @@
     (Post)Login --> http://localhost:5200/api/login
     (Get)Users --> http://localhost:5200/api/user
 
+
+// PRIMEROS PASOS
+Lo que necesito es que coja la cookie porque sin cogerla, solo se queda registrada en la aplicacion.
+pero cuando me voy a otra pestaña me sigue saltando el 401.
+
+Y luego necesitaria hacer el metodo de Buscar dato de la pestaña insertar.
+
+// DESPUES HACER UN ONCLICK QUE PASE LOS DATOS DE UN PUNTO A OTRO
+
+
 * ----------------------------------------------------------------------------------------------------------------------------------------------
 
 *    * ----___---- Datos / Ideas ----___----
@@ -72,7 +82,7 @@
 
 
 
-* *  IDEA 9: --> no se he sido capaz, si tengo la funcion javascript pero con tsx no
+* *  IDEA 9: --> no se he sido capaz, si tengo la funcion javascript si,pero con tsx no
     * Darle funcionalidad a "Buscar por Nombre o Email" de la pestaña /insertar
 
 

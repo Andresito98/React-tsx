@@ -1,9 +1,12 @@
 import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Cookies } from "typescript-cookie";
 
 const Nav = (props: {name: string, setName: (name:string) => void}) => {
   const baseUrl='https://localhost:7200/api/logout';
+  const jwt = Cookies.get("jwt");
+    console.log({jwtHome: jwt});
 
   const logout = async() => {
     axios({
@@ -17,6 +20,8 @@ const Nav = (props: {name: string, setName: (name:string) => void}) => {
 
   let menu;
 
+  // props.password === ''
+  // props.password === setPassword
   if(props.name === ''){
     menu = (
           <ul className="navbar-nav me-auto mb-2 mb-md-0">
@@ -27,7 +32,7 @@ const Nav = (props: {name: string, setName: (name:string) => void}) => {
                 <Link to="/register" className="nav-link">Register</Link>
               </li>
               <li className="nav-item active">
-                <Link to="/login" className="nav-link" onClick={logout}>Logout</Link>
+                <Link to="/logout" className="nav-link" onClick={logout}>Logout</Link>
               </li>
           </ul>
     )

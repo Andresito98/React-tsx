@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Stack,
     Table,
@@ -25,10 +25,14 @@ import {
     ModalCloseButton,
   } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
+import { Cookies } from "typescript-cookie";
 
 
 
 const Insertar = () => {
+    const jwt = Cookies.get("jwt");
+    //console.log({jwtHome: jwt});
+    
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     let navigate = useNavigate();
@@ -38,9 +42,51 @@ const Insertar = () => {
     const [country, setCountry] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
-    const [technologies, setTechnologies] = useState('');
-
+    const [technologies, setTechnologies] = useState('');   
     const [candidatos, setCandidatos]=useState<any>();
+
+
+    const [search, setSearch] = useState('');
+
+    // Metodo de busqueda y filtrado
+    const searcher = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+        setSearch(e.target.value)
+        console.log(e.target.value)
+    }
+
+    let resultss = []
+    
+    useEffect(() => {
+      if(search === '') resultss = candidatos;
+      else{
+          console.log()
+        resultss = candidatos?.filter((dato: { name: string; }) =>
+        dato.name.includes(search)
+        )
+    }
+    }, [search])
+    
+    /*
+    if(!search){
+        resultss = candidatos
+    }else{
+        resultss = candidatos?.filter((dato: { name: string; }) =>
+        dato.name.toString().toLowerCase().includes(search.toLocaleLowerCase())
+        )
+        //.toLowerCase().includes(search.toLocaleLowerCase())
+    }*/
+// 18.16
+
+/*
+useEffect(() => {
+        fetch('https://localhost:7200/api/candidato')
+        .then((response) => response.json())
+        .then((json) => setCandidatos(json));
+      },[]);
+
+*/
+
+
 
 
     const submit = async () => {      
@@ -56,15 +102,14 @@ const Insertar = () => {
           country,
           phone,
           email,
-          technologies
+          technologies,
+          jwt
         })
       }).then((response: any) => {
         submit2();
         console.log(candidatos)
     })
       //.then((res: any) => console.log(res)).catch((err: any) => console.log(err));
-
-
       return navigate('/home');
 
     }
@@ -76,15 +121,23 @@ const Insertar = () => {
           headers: {'Content-Type': 'application/json'},
           credentials: 'include'
         }).then((response: any) => {
-            //const _res = response.json();
-            //setCandidatos(_res)
-            console.log(response.json())
-        })
-  
-  
+            response.json()
+        }).then((candidatos: any) => setCandidatos(candidatos));
+    
         return navigate('/home');
   
       }
+
+      useEffect(() => {
+        fetch('https://localhost:7200/api/candidato')
+        .then((response) => response.json())
+        .then((json) => setCandidatos(json));
+      },[]);
+
+      
+    //const _res = response.json();
+    //setCandidatos(_res)
+    //console.log(response.json())
 
     
 
@@ -111,7 +164,7 @@ const Insertar = () => {
                 <Text fontSize='3xl'>Candidatos</Text>
             </Stack>
             <Stack pos="absolute" top="150" left="290px" >
-                <Input variant='filled' placeholder='Buscar por Nombre o Email' size='md' borderRadius='10px' width='300px' />
+                <Input value={search} onChange={searcher} variant='filled' placeholder='Buscar por Nombre o Email' size='md' borderRadius='10px' width='300px' />
             </Stack>
 
 
@@ -242,16 +295,3 @@ const Insertar = () => {
 }
 
 export default Insertar;
-
-/*
-{data.map(candidato=>(
-                        <Tr key={candidato.id}>
-                            <Td>{candidato.id}</th>
-                            <Td>{candidato.firstName}</th>
-                            <Td>{candidato.lastName}</th>
-                            <Td>{candidato.email}</th>
-                            <Td>{candidato.phone}</th>
-                            <Td>{candidato.address}</th>
-                        </Tr>
-                    ))}
-*/

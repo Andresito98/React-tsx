@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Cookies } from "typescript-cookie";
 
 
 const Register = () => {
@@ -7,6 +8,9 @@ const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const jwt = Cookies.get("jwt");
+    console.log({jwtHome: jwt});
 
     const submit = async(e: SyntheticEvent) => {
       e.preventDefault();

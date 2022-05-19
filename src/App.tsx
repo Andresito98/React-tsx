@@ -13,26 +13,7 @@ function App() {
   const [name, setName]= useState('');
   const baseUrl='https://localhost:7200/api/user';
 
-  /*
-  useEffect(() => {
-    (
-        async () => {
-            await axios({
-                method: 'get',
-                url: baseUrl,
-                headers: {'Content-Type': 'application/json'},
-                withCredentials: true,
-                data: {
-                    name: ''
-                }
-            }).catch(error=>{
-              console.log("Error no cogio las credenciales correctamente ")
-            })
 
-        }
-    )();
-})*/
-//Aqui el problema que puede causar esto es que en las cookies no coge el jwt y no se queda guardado
     
   return (
     <ChakraProvider>
