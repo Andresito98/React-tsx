@@ -11,7 +11,8 @@ import axios from 'axios';
 
 function App() {
   const [name, setName]= useState('');
-  const baseUrl='https://localhost:7200/api/user';
+  const baseUrl='https://net-api.onrender.com/api/user';
+  // const baseUrl='https://localhost:7200/api/user';
 
 
     

@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { Cookies } from "typescript-cookie";
 
 const Nav = (props: {name: string, setName: (name:string) => void}) => {
-  const baseUrl='https://localhost:7200/api/logout';
+  const baseUrl='https://net-api.onrender.com/logout';
+  // const baseUrl='https://localhost:7200/api/logout';
   const jwt = Cookies.get("jwt");
     console.log({jwtHome: jwt});
 

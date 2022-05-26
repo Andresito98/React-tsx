@@ -91,7 +91,8 @@ useEffect(() => {
 
     const submit = async () => {      
 
-      await fetch('https://localhost:7200/api/candidato', {
+        // 'https://localhost:7200/api/candidato'
+      await fetch('https://net-api.onrender.com/candidato', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         credentials: 'include',
@@ -116,7 +117,8 @@ useEffect(() => {
 
     const submit2 = async () => {      
 
-        await fetch('https://localhost:7200/api/candidato', {
+        //'https://localhost:7200/api/candidato'
+        await fetch('https://net-api.onrender.com/candidato', {
           method: 'GET',
           headers: {'Content-Type': 'application/json'},
           credentials: 'include'
@@ -128,8 +130,9 @@ useEffect(() => {
   
       }
 
+      // 'https://localhost:7200/api/candidato'
       useEffect(() => {
-        fetch('https://localhost:7200/api/candidato')
+        fetch('https://net-api.onrender.com/candidato')
         .then((response) => response.json())
         .then((json) => setCandidatos(json));
       },[]);

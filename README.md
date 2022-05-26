@@ -141,3 +141,8 @@ Y luego necesitaria hacer el metodo de Buscar dato de la pestaña insertar.
             Arreglado añadiendo las cookies --> const cookies = new Cookies();
             cookies.set('name','value', {path: '/'});
             window.location.href='/insertar';
+
+
+
+Tengo una duda de cuando hicimos lo del token jwt,
+Cuando en postman hago el login solo me sale el mensaje del token,pero al intentar obtener los usuarios me aparece como que no esta logeado un 401

@@ -9,7 +9,8 @@ import { Cookies } from "typescript-cookie";
 
 const Home = () => {  
     let navigate = useNavigate();
-    const baseUrl='https://localhost:7200/api/user';
+    const baseUrl='https://net-api.onrender.com/user';
+    // const baseUrl='https://localhost:7200/api/user';
     const [users, setUsers]=useState<any>();
 
     const jwt = Cookies.get("jwt");
@@ -39,7 +40,8 @@ const Home = () => {
 
       const submit2 = async () => {      
 
-        await fetch('https://localhost:7200/api/user', {
+        // 'https://localhost:7200/api/user'
+        await fetch('https://net-api.onrender.com/user', {
           method: 'GET',
           headers: {'Content-Type': 'application/json'},
           credentials: 'include'
@@ -51,8 +53,9 @@ const Home = () => {
   
       }
 
+      // 'https://localhost:7200/api/user'
       useEffect(() => {
-        fetch('https://localhost:7200/api/user')
+        fetch('https://net-api.onrender.com/user')
         .then((response) => response.json())
         .then((json) => setUsers(json));
       },[]);

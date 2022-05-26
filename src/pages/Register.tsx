@@ -15,7 +15,8 @@ const Register = () => {
     const submit = async(e: SyntheticEvent) => {
       e.preventDefault();
 
-      await fetch('https://localhost:7200/api/register', {
+      // 'https://localhost:7200/api/register'
+      await fetch('https://net-api.onrender.com/register', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         credentials: 'include',

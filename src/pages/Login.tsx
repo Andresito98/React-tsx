@@ -7,7 +7,8 @@ import swal from "sweetalert";
 const Login = () => {
   let navigate = useNavigate();
   const [data, setData] = useState([]);
-  const baseUrl = "https://localhost:7200/api/login";
+  const baseUrl = "https://net-api.onrender.com/login";
+  // const baseUrl = "https://localhost:7200/api/login";
   const [login, setLogingSeleccionado] = useState({
     email: "",
     password: "",
